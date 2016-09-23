@@ -4,10 +4,8 @@
 
 ## Description/Specifications
 
-#### An online shopping experience with a customized product package to ship to you or your family and friends
+#### An online shopping experience for Pike Place Market providing a customized product package to ship to you or your family and friends.
 
-##### User Scenarios
-* 
 
 ##### Process Flow
 
