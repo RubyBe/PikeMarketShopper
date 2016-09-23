@@ -11,15 +11,15 @@
 
 ##### Process Flow
 
-![process](/src/PikeMarketExperience/wwwroot/img/ProcessFlow.PNG)
+![process](/src/PikeMarketShopper/wwwroot/img/ProcessFlow.PNG)
 
 ##### Data Model
 
-![process](/src/PikeMarketExperience/wwwroot/img/DbModel.PNG)
+![process](/src/PikeMarketShopper/wwwroot/img/DbModel.PNG)
 
 ##### Routes and Views
 
-![process](/src/PikeMarketExperience/wwwroot/img/RoutesViews.PNG)
+![process](/src/PikeMarketShopper/wwwroot/img/RoutesViews.PNG)
 
 #### Use this program
 Clone this repository.
