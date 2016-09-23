@@ -11,9 +11,19 @@ namespace PikeMarketShopper.Models
     public DbSet<ProductType> ProductTypes { get; set; }
     public DbSet<Shop> Shops { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    {
+      options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PikeMarketShopper;integrated security=True");
+    }
+
     public PikeMarketDbContext(DbContextOptions<PikeMarketDbContext> options)
             : base(options)
         {
+    }
+
+    public PikeMarketDbContext()
+    {
+
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

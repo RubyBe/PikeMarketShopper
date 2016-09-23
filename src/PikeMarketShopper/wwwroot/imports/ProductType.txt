@@ -1,6 +1,0 @@
-ProductTypeId	Description	Name
-	"Spices, ingredients and products for nearly any kind of culinary endeavor or adventurous recipe"	Specialty Foods
-	"Year-round produce stands, called highstalls, sell fresh fruits, vegetables, herbs, locally foraged mushrooms and seasonal favorites from around the world and from local growers"	Produce
-	"Fish markets, butchers and dairy shops for fresh seafood, meat and dairy products from knowledgeable producers who know how and where the food was caught, raised or made"	"Fresh Fish, Meat and Dairy"
-	"Artisan products include cheese made in the Northwest—including some that’s hyperlocal: made and sold right in the Market! Other Market businesses make their own preserves, chutneys, pickles, sauerkraut, preserved lemons, flavored olive oils and vinegars, chocolate covered cherries and berries, gelato, and food imported from Italy, Germany, Portugal, Spain, Mexico, the Caribbean, the Middle East, and many other parts of the world."	"Artisan, Imported"
-		

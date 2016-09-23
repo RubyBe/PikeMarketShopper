@@ -1,0 +1,11 @@
+﻿@{ 
+  ViewData["Title"] = "PikeMarketShopper - Home Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Welcome to the Pike Place Market Shopper</h1>
+
+<p class="intro">We provide a tailored experience for your online shopping trip to the Pike Place Market. Browse the shops and products - and then you can choose to shop independently, or allow us to shop for you.</p>
+
+<p>@Html.ActionLink("View Products", "Index", "Products")</p>
+<p>@Html.ActionLink("View Shops", "Index", "Shops")</p>

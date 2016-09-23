@@ -1,0 +1,17 @@
+﻿@{
+  ViewData["Title"] = "PikeMarketShopper - Product Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<PikeMarketShopper.Models.Product>
+
+<h2>Available Products</h2>
+
+<ul>
+  @foreach (var listProduct in Model)
+  {
+    <li>@Html.DisplayFor(model => listProduct.Name)</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
