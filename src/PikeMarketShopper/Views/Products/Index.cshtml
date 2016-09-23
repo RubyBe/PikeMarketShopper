@@ -6,15 +6,31 @@
 @using PikeMarketShopper.Models;
 @model dynamic
 
+<h2>Product Types</h2>
+<ul>
+  @foreach(var listProductType in Model.ProductTypes)
+  {
+    <li>@listProductType.Name</li>
+  }
+</ul>
+<hr />
+
 <h2>Available Products</h2>
-
-
-
 <ul>
   @foreach (var listProduct in Model.Products)
   {
     <li>@listProduct.Name : @listProduct.Description</li>
   }
 </ul>
+<hr />
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<div class="administrative">
+  <div class="jumbotron">
+    <h4>For administrative use only:</h4>
+    <ul>
+      <li>@Html.ActionLink("Add a new product or product type", "Create")</li>
+      <li>@Html.ActionLink("Edit an existing product or product type", "Edit")</li>
+      <li>@Html.ActionLink("Delete an product or product type", "Create")</li>
+    </ul>
+  </div>
+</div>
