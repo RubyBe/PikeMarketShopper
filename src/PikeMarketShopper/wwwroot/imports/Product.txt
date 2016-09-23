@@ -1,0 +1,15 @@
+ProductId	Description	Name	Price	ProductTypeId	SentimentValue	Size
+	Beecher's Signature Cheese	Flagship	22.00	3	0.98	1 lb
+	Special Version of Signature	Flagship Reserve	27.00	3	0.98	1 lb
+	Green and Black Peppercorn	Marco Polo Reserve	28.00	3	0.98	1 lb
+	Natural Hardwood Smoked	Smoked Flagship	25.00	3	0.98	1 lb
+	Dutch Hollow Farms Jersey	Dutch Hollow Dulcet	22.00	3	0.98	1 lb
+	Butterscotch Sweetness	Flagsheep	32.00	3	0.98	1 lb
+	Peppercorns and Creamy	Marco Polo	20.00	3	0.98	1 lb
+	Jamaican Jerk Spice	No Woman	20.00	3	0.98	1 lb
+	Whole Milk and Cream	Just Jack	20.00	3	0.98	1 lb
+	Unique Robust Nutty Flavor	Kosher Flagship	24.00	3	0.98	1 lb
+	Biggest Block of Flagship	Flagship	119.00	3	0.98	8 lb Colossal Cut
+	Unpasteurized Milk	Raw Milk Flagship Reserve	28.00	3	0.98	1 lb
+	Bite-size Nuggets	Beecher's Curds	16.00	3	0.98	1 lb bag
+	Large Block	Marco Polo	79.00	3	0.98	5 lb Loaf
