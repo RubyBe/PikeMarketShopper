@@ -26,11 +26,13 @@
 
 <div class="administrative">
   <div class="jumbotron">
-    <h4>For administrative use only:</h4>
+    <h3>For administrative use only:</h3>
     <ul>
-      <li>@Html.ActionLink("Add a new product or product type", "Create")</li>
-      <li>@Html.ActionLink("Edit an existing product or product type", "Edit")</li>
-      <li>@Html.ActionLink("Delete an product or product type", "Create")</li>
+      @foreach (var listProduct in Model.Products)
+      {
+        <li>@listProduct.Name | @Html.ActionLink("Edit", "Edit", new { id = listProduct.ProductId }) | @Html.ActionLink("Delete", "Delete", new { id = listProduct.ProductId })</li>
+      }
     </ul>
+    <p>@Html.ActionLink("Add a new product", "Create")</p>
   </div>
 </div>

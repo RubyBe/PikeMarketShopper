@@ -1,0 +1,34 @@
+﻿@{
+  ViewData["Title"] = "PikeMarketShopper - New Product";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PikeMarketShopper.Models.Product
+
+<h2>Add a New Product</h2>
+<div class="jumbotron">
+  @using (Html.BeginForm())
+  {
+    <p>@Html.LabelFor(model => model.ProductTypeId)</p>
+    <p>@Html.DropDownList("ProductTypeId")</p>
+    <hr />
+    <p>@Html.LabelFor(model => model.Name)</p>
+    <p>@Html.TextBoxFor(model => model.Name)</p>
+    <hr />
+    <p>@Html.LabelFor(model => model.Description)</p>
+    <p>@Html.TextBoxFor(model => model.Description)</p>
+    <hr />
+    <p>@Html.LabelFor(model => model.Size)</p>
+    <p>@Html.TextBoxFor(model => model.Size)</p>
+    <hr />
+    <p>@Html.LabelFor(model => model.Price)</p>
+    <p>@Html.TextBoxFor(model => model.Price)</p>
+    <hr />
+    <p>@Html.LabelFor(model => model.SentimentValue)</p>
+    <p>@Html.TextBoxFor(model => model.SentimentValue)</p>
+    <hr />
+    <p><input type="submit" name="new-product" value="Add Product" /></p>
+    <hr />
+    @Html.ActionLink("Return to Product List", "Index")
+  }
+</div>
