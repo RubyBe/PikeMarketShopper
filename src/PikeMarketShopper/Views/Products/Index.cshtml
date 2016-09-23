@@ -13,17 +13,18 @@
     <li>@listProductType.Name</li>
   }
 </ul>
-<hr />
 
-<h2>Available Products</h2>
-<ul>
-  @foreach (var listProduct in Model.Products)
-  {
-    <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
-  }
-</ul>
-<hr />
+<div class="jumbotron">
+  <h2>Available Products</h2>
+  <ul>
+    @foreach (var listProduct in Model.Products)
+    {
+      <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
+    }
+  </ul>
+</div>
 
+@*To be displayed only when user is administrator*@
 <div class="administrative">
   <div class="jumbotron">
     <h3>For administrative use only:</h3>

@@ -13,6 +13,7 @@ namespace PikeMarketShopper.Models
     public string Size { get; set; }
     public decimal Price { get; set; }
     public decimal SentimentValue { get; set; }
+    public string Image { get; set; }
     public int ProductTypeId { get; set; }
     public virtual ProductType ProductType { get; set; }
     // the inventory table is a lookup table between Product and Shop
