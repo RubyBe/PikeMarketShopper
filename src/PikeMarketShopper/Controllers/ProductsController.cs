@@ -10,6 +10,8 @@ namespace PikeMarketShopper.Controllers
   public class ProductsController : Controller
   {
     PikeMarketDbContext db = new PikeMarketDbContext();
+
+    // View a listing of all products - indlude a list of all product types for future filtering
     public IActionResult Index()
     {
       dynamic duoModelIndex = new ExpandoObject();
@@ -19,6 +21,18 @@ namespace PikeMarketShopper.Controllers
       duoModelIndex.ProductTypes =theseProductTypes;
       return View(duoModelIndex);
     }
+
+    // View the details of a specific product - include the product type for this specific product
+    public IActionResult Details(int id)
+    {
+      dynamic duoModelDetails = new ExpandoObject();
+      var thisProduct = db.Products.FirstOrDefault(product => product.ProductId == id);
+      var thisProductType = db.ProductTypes.FirstOrDefault(producttype => producttype.ProductTypeId == thisProduct.ProductTypeId);
+      duoModelDetails.Products = thisProduct;
+      duoModelDetails.ProductTypes = thisProductType;
+      return View(duoModelDetails);
+    }
+
     // Get and Post for Creating a new product
     public IActionResult Create()
     {

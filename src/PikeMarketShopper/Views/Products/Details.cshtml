@@ -1,0 +1,35 @@
+﻿@{
+  ViewData["Title"] = "PikeMarketShopper - Product Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PikeMarketShopper.Models;
+@model dynamic
+
+
+<h2>Product Details</h2>
+
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-4">
+      <p>@Model.ProductTypes.Name</p>
+      <p><em>@Model.ProductTypes.Description</em></p>
+    </div>
+    <div class="col-md-1">
+      <p></p>
+    </div>
+    <div class="col-md-4">
+      <p>@Model.Products.Name</p>
+      <p>@Model.Products.Description</p>
+      <p>@Model.Products.Size</p>
+      <p>$@Model.Products.Price</p>
+      <input type="submit" value="Add to Cart" />
+    </div>
+    <div class="col-md-3">
+      <p>Image Goes Here</p>
+    </div>
+  </div>
+  <hr />
+  @Html.ActionLink("Return to Product List", "Index")
+</div>
+
