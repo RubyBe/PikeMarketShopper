@@ -3,14 +3,17 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<PikeMarketShopper.Models.Product>
+@using PikeMarketShopper.Models;
+@model dynamic
 
 <h2>Available Products</h2>
 
+
+
 <ul>
-  @foreach (var listProduct in Model)
+  @foreach (var listProduct in Model.Products)
   {
-    <li>@Html.DisplayFor(model => listProduct.Name)</li>
+    <li>@listProduct.Name : @listProduct.Description</li>
   }
 </ul>
 
