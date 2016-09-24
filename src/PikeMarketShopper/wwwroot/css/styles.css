@@ -1,6 +1,7 @@
 ﻿body {
   color: white;
   background-image: url("../img/PikeMarket.jpg");
+  background-repeat:no-repeat;
   background-size: cover;
 }
 
