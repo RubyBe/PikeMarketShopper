@@ -6,23 +6,39 @@
 @using PikeMarketShopper.Models;
 @model dynamic
 
-<h2>Product Types</h2>
-<ul>
-  @foreach(var listProductType in Model.ProductTypes)
-  {
-    <li>@listProductType.Name</li>
-  }
-</ul>
+<h1>Shop for Products</h1>
 
-<div class="jumbotron">
-  <h2>Available Products</h2>
-  <ul>
-    @foreach (var listProduct in Model.Products)
-    {
-      <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
-    }
-  </ul>
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="../img/Potatoes.jpg" alt="High Stalls at Market">
+      <div class="caption">
+        <h2>Product Types</h2>
+        <ul>
+          @foreach (var listProductType in Model.ProductTypes)
+          {
+            <li>@listProductType.Name</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="../img/Potatoes.jpg" alt="High Stalls at Market">
+      <div class="caption">
+        <h2>Products</h2>
+        <ul>
+          @foreach (var listProduct in Model.Products)
+          {
+            <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 @*To be displayed only when user is administrator*@
 <div class="administrative">
@@ -30,7 +46,7 @@
     <h3>For administrative use only:</h3>
     <ul>
       @foreach (var listProduct in Model.Products)
-      {
+  {
         <li>@listProduct.Name | @Html.ActionLink("Edit", "Edit", new { id = listProduct.ProductId }) | @Html.ActionLink("Delete", "Delete", new { id = listProduct.ProductId })</li>
       }
     </ul>

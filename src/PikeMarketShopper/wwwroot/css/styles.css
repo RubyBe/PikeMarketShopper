@@ -1,16 +1,21 @@
 ﻿body {
-  color: white;
+  /*background-color: cornsilk;*/
+  /*color: white;
   background-image: url("../img/PikeMarket.jpg");
   background-repeat:no-repeat;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 .jumbotron {
-  background-color: black;
+  background-color: burlywood;
 }
 
-h3.classLink {
+#new-h3 {
+  color: white;
+}
 
+input {
+  background-color: black;
 }
 
 .administrative {
