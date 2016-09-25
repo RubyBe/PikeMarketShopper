@@ -28,7 +28,7 @@
       <img src="../img/WaterFront.jpg" alt="Market View from Elliot Bay">
       <div class="caption">
         <h3>@Html.ActionLink("View Shops", "Index", "Shops")</h3>
-        <p>Visit the market Shops</p>
+        <p>Visit the market shops - meet the owners and view their recommendations for the best of the market</p>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
       <img src="../img/Potatoes.jpg" alt="Closeup of High Stall Potatoes">
       <div class="caption">
         <h3>@Html.ActionLink("Shop for Me", "Create", "Cart")</h3>
-        <p>We can provide an intuitively tailored package of the best of Pike Place Market</p>
+        <p>We can provide an intuitively tailored package of the best of Pike Place Market to ship to you or your friends</p>
       </div>
     </div>
   </div>
@@ -46,6 +46,10 @@
 @if (User.Identity.IsAuthenticated)
 {
   <h4>Welcome back, @User.Identity.Name!</h4>
+  @using (Html.BeginForm("Logoff", "Account"))
+  {
+    <input type="submit" class="btn btn-default" value="Log Out" />
+  }
 }
 else
 {

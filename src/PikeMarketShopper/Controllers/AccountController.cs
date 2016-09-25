@@ -62,5 +62,13 @@ namespace PikeMarketShopper.Controllers
         return View();
       }
     }
+
+    // Log out current user
+    [HttpPost]
+    public async Task<IActionResult> Logoff()
+    {
+      await _signInManager.SignOutAsync();
+      return RedirectToAction("Index");
+    }
   }
 }
