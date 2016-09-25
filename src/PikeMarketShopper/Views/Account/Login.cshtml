@@ -1,0 +1,22 @@
+﻿@{ 
+  ViewData["Title"] = "PikeMarketShopper - Login";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PikeMarketShopper.ViewModels
+
+@model LoginViewModel
+
+<h2>Log in with your account</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Email)
+  @Html.TextBoxFor(m => m.Email)
+  <hr />
+  @Html.LabelFor(m => m.Password)
+  @Html.PasswordFor(m => m.Password)
+  <hr />
+  <input type="submit" value="Log In" />
+}

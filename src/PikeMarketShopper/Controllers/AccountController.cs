@@ -1,7 +1,4 @@
-﻿//this is currently a duplicate of everything in the Account controller which is the directory that's actually being used - identity doesn't work unless controller and views are under 'account'
-
-
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PikeMarketShopper.Models;
 using PikeMarketShopper.ViewModels;
@@ -9,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace PikeMarketShopper.Controllers
 {
-  public class HomeController : Controller
+  public class AccountController : Controller
   {
     private readonly PikeMarketDbContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, PikeMarketDbContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, PikeMarketDbContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
@@ -27,6 +24,7 @@ namespace PikeMarketShopper.Controllers
       return View();
     }
 
+    // Create a new user account
     public IActionResult Register()
     {
       return View();
@@ -44,6 +42,12 @@ namespace PikeMarketShopper.Controllers
       {
         return View();
       }
+    }
+
+    // Authenticate returning user
+    public IActionResult Login()
+    {
+      return View();
     }
 
   }

@@ -1,0 +1,27 @@
+﻿@*this is currently a duplicate of everything in the Account directory which is the directory that's actually being used - identity doesn't work unless controller and views are under 'account'*@
+
+@{ 
+  ViewData["Title"] = "PikeMarketShopper - Register";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PikeMarketShopper.ViewModels
+
+@model RegisterViewModel
+
+<h2>Create a New Account</h2>
+<hr />
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+  <hr />
+  @Html.LabelFor(m => m.Email)
+  @Html.TextBoxFor(m => m.Email)
+  <hr />
+  @Html.LabelFor(m => m.Password)
+  @Html.PasswordFor(m => m.Password)
+  <hr />
+  @Html.LabelFor(m => m.ConfirmPassword)
+  @Html.PasswordFor(m => m.ConfirmPassword)
+  <hr />
+  <input type="submit" value="Register" />
+}
