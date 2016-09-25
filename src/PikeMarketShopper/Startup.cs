@@ -29,8 +29,8 @@ namespace PikeMarketShopper
         .AddDbContext<PikeMarketDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<PikeMarketDbContext>()
-        .AddDefaultTokenProviders();
+          .AddEntityFrameworkStores<PikeMarketDbContext>()
+          .AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app)
