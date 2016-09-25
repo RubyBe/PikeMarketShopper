@@ -3,6 +3,8 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using System.Security.Claims
+
 <div class="page-header">
   <h1>Welcome to the Sentiment Shopper 
     <small>
@@ -41,8 +43,15 @@
   </div>
 </div>
 
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>Welcome back, @User.Identity.Name!</h4>
+}
+else
+{
 <div>
   <hr />
-  <p>@Html.ActionLink("Log in to my account", "Login")</p>
-  <p>@Html.ActionLink("Create a new account", "Register")</p>
+  <h4>@Html.ActionLink("Log in to my account", "Login")</h4>
+  <h4>@Html.ActionLink("Create a new account", "Register")</h4>
 </div>
+}
