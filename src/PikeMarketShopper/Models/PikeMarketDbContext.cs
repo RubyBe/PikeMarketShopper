@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace PikeMarketShopper.Models
 {
-  public class PikeMarketDbContext : DbContext
+  public class PikeMarketDbContext :  IdentityDbContext<ApplicationUser>
   {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Address> Addresses { get; set; }

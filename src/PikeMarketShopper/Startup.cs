@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
@@ -26,16 +27,21 @@ namespace PikeMarketShopper
 
       services.AddEntityFramework()
         .AddDbContext<PikeMarketDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<PikeMarketDbContext>()
+        .AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app)
     {
+      app.UseIdentity();
       app.UseStaticFiles();
       app.UseMvc(routes =>
       {
         routes.MapRoute(
           name: "default",
-          template: "{controller=Home}/{action=Index}/{id?}");
+          template: "{controller=Home}/{action=Index}/{id?}"); 
       });
 
       app.Run(async (context) =>
