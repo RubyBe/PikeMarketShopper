@@ -32,11 +32,12 @@ namespace PikeMarketShopper.Controllers
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
+      ModelState.Clear();
       var user = new ApplicationUser { UserName = model.Email };
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
-        return RedirectToAction("Index");
+        return RedirectToAction("Login"); // Go immediately to login page
       }
       else
       {
@@ -52,6 +53,7 @@ namespace PikeMarketShopper.Controllers
     [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+      ModelState.Clear();
       Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
       if (result.Succeeded)
       {
