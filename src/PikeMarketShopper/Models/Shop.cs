@@ -9,6 +9,8 @@ namespace PikeMarketShopper.Models
   {
     [Key]
     public int ShopId { get; set; }
+    public string Name { get; set; }
+    public string Image { get; set; }
     public string GeoLocation { get; set; }
     public int Number { get; set; }
     public string Street { get; set; }

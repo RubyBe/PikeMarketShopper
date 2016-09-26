@@ -8,9 +8,10 @@ using PikeMarketShopper.Models;
 namespace pikemarketshopper.Migrations
 {
     [DbContext(typeof(PikeMarketDbContext))]
-    partial class PikeMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160926020848_AddNameImageToShops")]
+    partial class AddNameImageToShops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
