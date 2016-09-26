@@ -20,9 +20,7 @@
 ![process](/src/PikeMarketShopper/wwwroot/img/RoutesViews.PNG)
 
 #### Use this program
-Clone this repository.
-
-Prepare your machine by following the [instructions here.](https://www.learnhowtoprogram.com/)
+Clone this repository, build and run program in Visual Studio 2015.
 
 #### Known Bugs / Unimplemented Features
 TBD
@@ -31,7 +29,7 @@ TBD
 Please contact the author if you have any questions or comments.
 
 #### Technologies Used
-This web application was created using Javascript and Angular 2
+This web application was created using ASP.NET Core 1.0 with C# and Razor.
 
 #### License
 Copyright (c) 2016 _**Sid Benavente**_
