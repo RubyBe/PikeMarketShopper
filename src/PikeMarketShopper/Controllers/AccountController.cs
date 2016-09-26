@@ -8,9 +8,12 @@ namespace PikeMarketShopper.Controllers
 {
   public class AccountController : Controller
   {
+    // properties for user authentication, login and logout
     private readonly PikeMarketDbContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    // properties for user role management
+    //private readonly RoleManager<ApplicationUser> _roleManager;
 
     public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, PikeMarketDbContext db)
     {
