@@ -3,5 +3,12 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model IEnumerable<PikeMarketShopper.Models.Product>
 
-<h1>Products by Product Type</h1>
+<h2>Products</h2>
+@foreach (var listProduct in Model)
+{
+  <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
+}
+<hr />
+<p>@Html.ActionLink("Return to Product List", "Index")</p>
