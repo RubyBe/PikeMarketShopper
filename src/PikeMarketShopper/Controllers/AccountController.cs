@@ -13,13 +13,13 @@ namespace PikeMarketShopper.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     // properties for user role management
-    //private readonly RoleManager<ApplicationUser> _roleManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
 
-    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, PikeMarketDbContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
     {
-      _userManager = userManager;
-      _signInManager = signInManager;
-      _db = db;
+      this._userManager = userManager;
+      this._signInManager = signInManager;
+      this._roleManager = roleManager;
     }
 
     public IActionResult Index()
@@ -32,14 +32,20 @@ namespace PikeMarketShopper.Controllers
     {
       return View();
     }
+    // Add user, assign role, write to Identity tables
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
       ModelState.Clear();
-      var user = new ApplicationUser { UserName = model.Email };
+      ApplicationUser user = new Models.ApplicationUser();
+      user.UserName = model.Email;
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
+        ApplicationRole role = new ApplicationRole();
+        role.Name = "Administrator";
+        IdentityResult roleResults = await _roleManager.CreateAsync(role);
+        _userManager.AddToRoleAsync(user, "Administrator").Wait();
         return RedirectToAction("Login"); // Go immediately to login page
       }
       else
