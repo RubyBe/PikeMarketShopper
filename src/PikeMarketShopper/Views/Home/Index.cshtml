@@ -1,4 +1,4 @@
-﻿@*@{ 
+﻿@{
   ViewData["Title"] = "PikeMarketShopper - Home Index";
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,7 +6,8 @@
 @using System.Security.Claims
 
 <div class="page-header">
-  <h1>Welcome to the Sentiment Shopper 
+  <h1>
+    Welcome to the Sentiment Shopper
     <small>
       A unique online shopping experience for Pike Place Market in Seattle
     </small>
@@ -16,7 +17,7 @@
 <div class="row">
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="../img/HighStallResized.jpg" alt="High Stalls at Market" >
+      <img src="../img/HighStallResized.jpg" alt="High Stalls at Market">
       <div class="caption">
         <h3>@Html.ActionLink("View Products", "Index", "Products", new { @class = "classLink" })</h3>
         <p>View fresh and artisan products</p>
@@ -55,14 +56,14 @@
 }
 else
 {
-<div>
-  <hr />
-  <h4>@Html.ActionLink("Log in to my account", "Login")</h4>
-  <h4>@Html.ActionLink("Create a new account", "Register")</h4>
-</div>
+  <div>
+    <hr />
+    <h4>@Html.ActionLink("Log in to my account", "Login", "Account")</h4>
+    <h4>@Html.ActionLink("Create a new account", "Register", "Account")</h4>
+  </div>
 }
 @*To be displayed only when user is administrator*@
 <div class="container" id="administrative">
   <h5>User Management (Administrator)</h5>
   <h4>@Html.ActionLink("Manage user accounts", "Index")</h4>
-</div>*@
+</div>
