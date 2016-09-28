@@ -62,8 +62,11 @@ else
     <h4>@Html.ActionLink("Create a new account", "Register", "Account")</h4>
   </div>
 }
-@*To be displayed only when user is administrator*@
-<div class="container" id="administrative">
-  <h5>User Management (Administrator)</h5>
-  <h4>@Html.ActionLink("Manage user accounts", "Index")</h4>
-</div>
+@if (User.IsInRole("Administrator"))
+{
+  <hr />
+  <div class="container" id="administrative">
+    <h3>System Administrative Tools</h3>
+    <h4>@Html.ActionLink("Manage user accounts", "Index")</h4>
+  </div>
+}

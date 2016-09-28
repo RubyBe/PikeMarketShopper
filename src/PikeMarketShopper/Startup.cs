@@ -26,7 +26,10 @@ namespace PikeMarketShopper
     public void ConfigureServices(IServiceCollection services)
     {
       // Provide services for authorization
-      services.AddAuthorization();
+      services.AddAuthorization(options =>
+      {
+        options.AddPolicy("AdministratorOnly", policy => policy.RequireRole("Administrator"));
+      });
       services.AddMvc(config =>
       {
         var policy = new AuthorizationPolicyBuilder()
