@@ -6,3 +6,13 @@
 @model IEnumerable<PikeMarketShopper.Models.Shop>
 
 <h1>View Pike Market Shops</h1>
+
+@*To be displayed only when user is administrator*@
+@if (User.IsInRole("Administrator"))
+{
+  <div class="container" id="administrative">
+    <hr />
+    <h3>System Administrative Tools - Shop Management</h3>
+    <h4>@Html.ActionLink("Manage member shops", "Index")</h4>
+  </div>
+}

@@ -44,28 +44,12 @@
   </div>
 </div>
 
-@if (User.Identity.IsAuthenticated)
-{
-  <div>
-    <h4>Welcome @User.Identity.Name!</h4>
-    @using (Html.BeginForm("Logoff", "Account"))
-    {
-      <input type="submit" class="btn btn-default" value="Log Out" />
-    }
-  </div>
-}
-else
-{
-  <div>
-    <hr />
-    <h4>@Html.ActionLink("Log in to my account", "Login", "Account")</h4>
-    <h4>@Html.ActionLink("Create a new account", "Register", "Account")</h4>
-  </div>
-}
+
+@*To be displayed only when user is administrator*@
 @if (User.IsInRole("Administrator"))
 {
-  <hr />
   <div class="container" id="administrative">
+    <hr />
     <h3>System Administrative Tools - User Management</h3>
     <h4>@Html.ActionLink("Manage user accounts", "Index")</h4>
   </div>
