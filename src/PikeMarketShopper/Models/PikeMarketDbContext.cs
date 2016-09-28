@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PikeMarketShopper.Models
 {
-  public class PikeMarketDbContext :  IdentityDbContext<ApplicationUser>
+  public class PikeMarketDbContext :  IdentityDbContext<ApplicationUser, ApplicationRole, string>
   {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Address> Addresses { get; set; }
