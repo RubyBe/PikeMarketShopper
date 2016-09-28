@@ -1,4 +1,4 @@
-﻿//this is currently a duplicate of everything in the Account controller which is the directory that's actually being used - identity doesn't work unless controller and views are under 'account'
+﻿//this is currently a duplicate of everything in the Account controller which is the directory that's actually being used - couldn't get identity to work unless controller and views are under 'account'
 
 
 using Microsoft.AspNetCore.Identity;
