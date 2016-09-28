@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Dynamic;
 using System.Linq;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PikeMarketShopper.Controllers
 {
+  [AllowAnonymous]
   public class ProductsController : Controller
   {
     PikeMarketDbContext db = new PikeMarketDbContext();

@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PikeMarketShopper.Models;
 
 namespace PikeMarketShopper
@@ -26,7 +27,13 @@ namespace PikeMarketShopper
     {
       // Provide services for authorization
       services.AddAuthorization();
-      services.AddMvc();
+      services.AddMvc(config =>
+      {
+        var policy = new AuthorizationPolicyBuilder()
+          .RequireAuthenticatedUser()
+          .Build();
+        config.Filters.Add(new AuthorizeFilter(policy));
+      });
       services.AddDbContext<PikeMarketDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
       // Provide services for authentication
       services.AddIdentity<ApplicationUser, ApplicationRole>()
@@ -38,6 +45,14 @@ namespace PikeMarketShopper
     {
       app.UseIdentity();
       app.UseStaticFiles();
+      app.UseCookieAuthentication(new CookieAuthenticationOptions
+      {
+        AuthenticationScheme = "Cookie",
+        LoginPath = new PathString("/Account/Login/"),
+        AccessDeniedPath = new PathString("/Account/Forbidden/"),
+        AutomaticAuthenticate = true,
+        AutomaticChallenge = true
+      });
       app.UseMvc(routes =>
       {
         routes.MapRoute(

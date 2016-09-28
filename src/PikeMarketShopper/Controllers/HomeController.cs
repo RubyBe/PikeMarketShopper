@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PikeMarketShopper.Controllers
 {
+  [AllowAnonymous]
   public class HomeController : Controller
   {
     private readonly PikeMarketDbContext _db;
