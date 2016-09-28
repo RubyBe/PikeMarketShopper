@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using PikeMarketShopper.Models;
 
 namespace PikeMarketShopper
 {
+  [Authorize]
   public class Startup
   {
     public IConfigurationRoot Configuration { get; set; }
@@ -23,10 +25,11 @@ namespace PikeMarketShopper
 
     public void ConfigureServices(IServiceCollection services)
     {
+      // Provide services for authorization
+      services.AddAuthorization();
       services.AddMvc();
-
       services.AddDbContext<PikeMarketDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-
+      // Provide services for authentication
       services.AddIdentity<ApplicationUser, ApplicationRole>()
           .AddEntityFrameworkStores<PikeMarketDbContext>()
           .AddDefaultTokenProviders();

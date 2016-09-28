@@ -23,7 +23,8 @@
       <p>@Model.Products.Description</p>
       <p>@Model.Products.Size</p>
       <p>$@Model.Products.Price</p>
-      <input type="submit" value="Add to Cart" />
+      <h4>@Html.ActionLink("Add to Cart", "Index", "Cart")</h4>
+
     </div>
     <div class="col-md-3">
       <p><img src=@Model.Products.Image alt="Product Image" width="225" height="175"/></p>
