@@ -81,5 +81,11 @@ namespace PikeMarketShopper.Controllers
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index", "Home");
     }
+
+    // A view when login is required
+    public IActionResult Forbidden()
+    {
+      return View();
+    }
   }
 }

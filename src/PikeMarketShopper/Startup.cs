@@ -11,7 +11,6 @@ using PikeMarketShopper.Models;
 
 namespace PikeMarketShopper
 {
-  [Authorize]
   public class Startup
   {
     public IConfigurationRoot Configuration { get; set; }
