@@ -35,6 +35,13 @@ namespace PikeMarketShopper.Controllers
       return View(duoModelDetails);
     }
 
+    // View lists of product by product type
+    public IActionResult Categories(int id)
+    {
+      var theseProducts = db.Products.Where(product => product.ProductTypeId == id);
+      return View(theseProducts);
+    }
+
     // Get and Post for Creating a new product
     public IActionResult Create()
     {

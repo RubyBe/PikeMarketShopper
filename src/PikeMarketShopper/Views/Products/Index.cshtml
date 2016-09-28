@@ -13,11 +13,11 @@
     <div class="thumbnail">
       <img src="../img/Pigs.jpg" alt="High Stalls at Market">
       <div class="caption">
-        <h2>Product Types</h2>
+        <h2>By Product Types</h2>
         <ul>
           @foreach (var listProductType in Model.ProductTypes)
           {
-            <li>@listProductType.Name</li>
+            <li><b>@listProductType.Name:</b> @listProductType.Description | @Html.ActionLink("View Products", "Categories", new { id = listProductType.ProductTypeId })</li>
           }
         </ul>
       </div>
@@ -27,10 +27,10 @@
     <div class="thumbnail">
       <img src="../img/PotatoesResized.jpg" alt="High Stalls at Market">
       <div class="caption">
-        <h2>Products</h2>
+        <h2>All Products</h2>
         <ul>
           @foreach (var listProduct in Model.Products)
-          {
+            {
             <li>@listProduct.Description: @listProduct.Name | @Html.ActionLink("View Details", "Details", new { id = listProduct.ProductId })</li>
           }
         </ul>
