@@ -1,0 +1,16 @@
+﻿@{ 
+  ViewData["Title"] = "PikeMarketShopper - User Management";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<PikeMarketShopper.Models.ApplicationUser>
+
+<h1>User Management</h1>
+
+<ul>
+  @foreach(var user in Model)
+  {
+    <li>@Html.DisplayFor(userModel => user.UserName) | @Html.ActionLink("Edit", "Edit", new { id = user.Id })</li>
+
+  }
+</ul>
