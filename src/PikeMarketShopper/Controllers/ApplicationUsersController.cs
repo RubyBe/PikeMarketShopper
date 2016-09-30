@@ -23,12 +23,12 @@ namespace PikeMarketShopper.Controllers
       var thisUser = db.Users.Select(user => user.Id == id);
       return View(thisUser);
     }
-    [HttpPost]
-    public IActionResult Edit(ApplicationUser user)
-    {
-      //db.Entry(product).State = EntityState.Modified;
-      //db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    //[HttpPost]
+    //public IActionResult Edit(ApplicationUser user)
+    //{
+    //  //db.Entry(product).State = EntityState.Modified;
+    //  //db.SaveChanges();
+    //  return RedirectToAction("Index");
+    //}
   }
 }

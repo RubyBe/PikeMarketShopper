@@ -3,4 +3,22 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit User Details</h1>
+@model PikeMarketShopper.Models.ApplicationUser
+
+<h2>Edit User Details</h2>
+
+@*@using (Html.BeginForm())
+{
+  <hr />
+  <p>@Html.HiddenFor(model => model.Id)</p>
+
+  <p>@Html.LabelFor(model => model.UserName)</p>
+  <p>@Html.EditorFor(model => model.UserName)</p>
+  <hr />
+  @<ul>
+    @foreach (var listRoles in Model.Roles)
+    {
+      <li>@Html.DisplayFor(model => model.Roles)</li>
+    }
+  </ul>
+ }*@
