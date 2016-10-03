@@ -21,5 +21,21 @@ namespace PikeMarketShopper.Tests.ControllerTests
       // Assert
       Assert.IsType<ExpandoObject>(result);
     }
+    [Fact]
+    public void Post_MethodAddsProduct_Test()
+    {
+      // Arrange
+      ProductsController controller = new ProductsController();
+      Product testProduct = new Product();
+      testProduct.Description = "test product";
+      testProduct.ProductTypeId = 1;
+      // Act
+      controller.Create(testProduct);
+      ViewResult indexView = new ProductsController().Index() as ViewResult;
+      var collection = indexView.ViewData.Model as IEnumerable<Product>;
+      // Assert
+      Assert.Contains<Product>(testProduct, collection);
+      // this test fails because the model being passed in is dynamic - will continue on and see if i can figure a solution out for this later on
+    }
   }
 }
