@@ -13,6 +13,9 @@ namespace PikeMarketShopper.Models.Repositories
     public IQueryable<Product> Products
     { get { return db.Products; } }
 
+    public IQueryable<ProductType> ProductTypes
+    { get { return db.ProductTypes; } }
+
     public Product Save(Product product)
     {
       db.Products.Add(product);

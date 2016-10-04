@@ -8,6 +8,7 @@ namespace PikeMarketShopper.Models.Repositories
   public interface IProductRepository
   {
     IQueryable<Product> Products { get;  }
+    IQueryable<Product> ProductTypes { get; }
     Product Save(Product product);
     Product Edit(Product product);
     void Remove(Product product);
