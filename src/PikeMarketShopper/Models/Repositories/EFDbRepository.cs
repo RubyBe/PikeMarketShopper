@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PikeMarketShopper.Models.Repositories
 {
-  public class EFProductRepository : IProductRepository
+  public class EFDbRepository : IProductRepository, IProductTypeRepository
   {
     PikeMarketDbContext db = new PikeMarketDbContext();
 
@@ -33,6 +33,16 @@ namespace PikeMarketShopper.Models.Repositories
     {
       db.Products.Remove(product);
       db.SaveChanges();
+    }
+
+    public void SaveChanges()
+    {
+      throw new NotImplementedException();
+    }
+
+    public object Entry(Product product)
+    {
+      throw new NotImplementedException();
     }
   }
 }
