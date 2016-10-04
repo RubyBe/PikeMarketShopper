@@ -10,7 +10,9 @@ namespace PikeMarketShopper.Models.Repositories
   {
     PikeMarketDbContext db = new PikeMarketDbContext();
 
-    public IQueryable<Product> Products { get { return db.Products; } }
+    public IQueryable<Product> Products
+    { get { return db.Products; } }
+
     public Product Save(Product product)
     {
       db.Products.Add(product);

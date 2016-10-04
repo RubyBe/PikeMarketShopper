@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PikeMarketShopper.Models.Repositories
 {
-  public class IProductRepository
+  public interface IProductRepository
   {
     IQueryable<Product> Products { get;  }
     Product Save(Product product);
