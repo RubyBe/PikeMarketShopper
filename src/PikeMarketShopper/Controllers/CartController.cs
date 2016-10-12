@@ -1,7 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using PikeMarketShopper.Models;
 
 namespace PikeMarketShopper.Controllers
 {
@@ -11,6 +12,19 @@ namespace PikeMarketShopper.Controllers
     {
         return View();
     }
+
+    public IActionResult SendSentiment()
+    {
+      return View();
+    }
+    [HttpPost]
+    public IActionResult SendSentiment(Sentiment newSentiment)
+    {
+      newSentiment.Send();
+      return RedirectToAction("Index");
+    }
+
+
 
     public IActionResult Create()
     {

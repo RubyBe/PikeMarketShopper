@@ -10,6 +10,7 @@ namespace PikeMarketShopper.Models
     public DbSet<Product> Products { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<ProductType> ProductTypes { get; set; }
+    public DbSet<Sentiment> Sentiment { get; set; }
     public DbSet<Shop> Shops { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)

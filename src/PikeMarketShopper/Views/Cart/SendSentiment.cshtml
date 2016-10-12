@@ -1,0 +1,57 @@
+﻿@{
+  ViewData["Title"] = "PikeMarketShopper - Product Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PikeMarketShopper.Models.Sentiment
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#analyze").click(function() {
+      var cartSentiment = {
+        "documents": [
+          {
+            "language": "en",
+            "id": "1",
+            "text": "I feel wonderful"
+          }
+        ]
+      };
+
+      $.ajax({
+        url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment',
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function(xhrObj) {
+          xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "5d3daed372b24b6ab9c60c4c85694893");
+          xhrObj.setRequestHeader("Content-Type", "application/json");
+          xhrObj.setRequestHeader("Accept", "application/json");
+        },
+        data: JSON.stringify(cartSentiment),
+        })
+        .done(function(data) {
+          alert("Sentiment score is" + data.documents[0].score);
+        })
+        .fail(function() {
+          alert("Error");
+      });
+    });
+  });
+</script>
+
+<h1>Design my Package!</h1>
+<hr />
+<div>
+  @*@using (Html.BeginForm())
+  {*@
+    @*<p>@Html.LabelFor(model => model.Id)</p>
+    @Html.TextBoxFor(model => model.Id)
+    <p>@Html.LabelFor(model => model.Language)</p>
+    @Html.TextBoxFor(model => model.Language)
+    <p>@Html.LabelFor(model => model.Text)</p>
+    @Html.TextAreaFor(model => model.Text)*@
+    <p><input type="submit" id ="analyze" value="Analyze" /></p>
+  @*}*@
+</div>
+<hr />
+@Html.ActionLink("Home", "Index")
