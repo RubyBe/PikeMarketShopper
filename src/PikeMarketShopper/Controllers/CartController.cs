@@ -19,9 +19,16 @@ namespace PikeMarketShopper.Controllers
 
     public IActionResult Create()
     {
-      //IEnumerable<Product> productList = db.Products.ToList(); 
-      //return View(productList);
       return View();
+    }
+
+    public IActionResult GetProduct(int sentiment)
+    {
+      Product selectedProduct = db.Products.FirstOrDefault(product => product.SentimentValue < sentiment);
+      string name = selectedProduct.Name;
+      double price = selectedProduct.Price;
+      Product returnProduct = new Product(name, price);
+      return Json(returnProduct);
     }
   }
 }

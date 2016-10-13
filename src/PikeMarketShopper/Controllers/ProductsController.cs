@@ -29,7 +29,7 @@ namespace PikeMarketShopper.Controllers
       }
     }
 
-    // View a listing of all products - indlude a list of all product types for future filtering
+    // View a listing of all products - include a list of all product types for future filtering
     public IActionResult Index()
     {
       dynamic duoModelIndex = new ExpandoObject();

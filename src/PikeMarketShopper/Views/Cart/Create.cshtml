@@ -5,7 +5,7 @@
 
 <h1>The Intuitively Tailored Pike Market Shopper</h1>
 
-@*@model PikeMarketShopper.Models.Product*@
+@*@model IEnumerable<PikeMarketShopper.Models.Product>*@
 
 <script type="text/javascript">
   $(document).ready(function () {
@@ -44,10 +44,22 @@
         });
 
       function writeData(result) {
-        console.log(scoreSentiment);
-        
+        console.log(scoreSentiment);       
       }
-
+    });
+    // display the appropriate products based on the sentiment level
+    $(".display-product").click(function () {
+      $.ajax({
+        type: 'GET',
+        data: { sentiment: 1 }, // use scoreSentiment
+        dataType: 'json',
+        contentType: 'application/json',
+        url: '@Url.Action("GetProduct")',
+        success: function (result) {
+          var resultString = "Product: " + result.name + "<br>Price: $" + result.price + "</br>";
+          $('#returned-product').html(resultString);
+        }
+      })
     });
   });
 </script>
@@ -55,20 +67,22 @@
 <h2>Design a Customized Product Package!</h2>
 <hr />
 <div>
-  <p>The Intuitive Tailored shopping tool will design a package of products based on your mood or situation - or your friend's or family member's situation. In the text box below, describe how you or your friend/family member is feeling, or what situation you or they are in...we'll use Microsoft's Cognitive Services to analyze the text and put together a product package designed to make you feel great!</p>
+  <p>The Intuitive Tailored shopping tool will select a product based on your mood or situation - or your friend's or family member's situation. In the text box below, describe how you or your friend/family member is feeling, or what situation you or they are in...we'll use Microsoft's Cognitive Services to analyze the text and we'll select a product to make you feel great!</p>
   <hr />
   <input type="text" id="textSentiment" value="Enter your text here" />
   <hr />
-  <p><input type="submit" id ="analyze" value="Design my package!" /></p>
+  <h3>Sentiment Analysis</h3>
+  <h5>The sentiment analysis score is a reflection of the positive or negative sentiment. It is calculated using Microsoft Cognitive Services. The minimum score is 0 (the most negative), and maximum score is 1 (the most positive). Your selected product is based on this score - click to view your score, and make any changes to your text that you'ld like. Then click to select your product.</h5>
+  <p><input type="submit" id ="analyze" value="Analyze" /></p>
+  <h3><span class="return-score"></span></h3>
 </div>
 
 <hr />
-@*To be displayed only when user is administrator*@
-@if (User.IsInRole("Administrator"))
-{
-<h3>Sentiment Analysis (Administrator Use Only)</h3>
-<h5>The sentiment analysis score is a reflection of the positive or negative sentiment. It is calculated using Microsoft Cognitive Services. The minimum score is 0 (the most negative), and maximum score is 1 (the most positive). The product package is designed based on how much 'cheering up' the customer requires.</h5>
-<h3><span class="return-score"></span></h3>
-}
+<h3 class="display-product">Select My Product</h3>
+<div id="returned-product"></div>
+
+<hr />
+
+
 
 @Html.ActionLink("Home", "Index")

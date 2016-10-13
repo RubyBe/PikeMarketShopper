@@ -7,6 +7,17 @@ namespace PikeMarketShopper.Models
   [Table("Products")]
   public class Product
   {
+    public Product()
+    {
+
+    }
+    public Product(string name, double price)
+    {
+      Name = name;
+      Price = price;
+    }
+
+
     public override bool Equals(System.Object otherProduct)
     {
       if (!(otherProduct is Product))
@@ -25,8 +36,8 @@ namespace PikeMarketShopper.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public string Size { get; set; }
-    public decimal Price { get; set; }
-    public decimal SentimentValue { get; set; }
+    public double Price { get; set; }
+    public double SentimentValue { get; set; }
     public string Image { get; set; }
     public int ProductTypeId { get; set; }
     public virtual ProductType ProductType { get; set; }
