@@ -1,9 +1,6 @@
-﻿body {
-  /*background-color: cornsilk;*/
-  /*color: white;
-  background-image: url("../img/PikeMarket.jpg");
-  background-repeat:no-repeat;
-  background-size: cover;*/
+﻿#textSentiment {
+  height: 150px;
+  width: 625px;
 }
 
 .thumbnail {
