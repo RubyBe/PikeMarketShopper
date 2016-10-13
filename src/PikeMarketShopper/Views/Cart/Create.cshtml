@@ -10,8 +10,9 @@
 <script type="text/javascript">
   $(document).ready(function () {
     var scoreSentiment = 0;
+    console.log("First: " + scoreSentiment);
     $("#analyze").click(function () {
-      // retrieve the form text from the customer and create a json string to sent to Microsoft's Cognitive Services API
+      // retrieve the form text from the customer and create a json string to send to Microsoft's Cognitive Services API
       var feed = $("#textSentiment").val();
       var cartSentiment = {
         "documents": [
@@ -24,42 +25,40 @@
       };
 
       $.ajax({
+        // post the the Cognitive Services API and write the returned sentiment score to scoreSentiment
         url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment',
         type: 'POST',
         dataType: 'json',
-        beforeSend: function(xhrObj) {
+        beforeSend: function (xhrObj) {
           xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "5d3daed372b24b6ab9c60c4c85694893");
           xhrObj.setRequestHeader("Content-Type", "application/json");
           xhrObj.setRequestHeader("Accept", "application/json");
         },
         data: JSON.stringify(cartSentiment),
-        })
-        .done(function (data) {
+        success: function (data) {
           scoreSentiment = data.documents[0].score;
-          writeData(scoreSentiment);
+          console.log("Inner: " + scoreSentiment);
           $(".return-score").append(scoreSentiment);
-        })
-        .fail(function() {
+        },
+        error: (function () {
           alert("Please enter text before clicking!");
-        });
+        })
+      });
 
-      function writeData(result) {
-        console.log(scoreSentiment);       
-      }
-    });
-    // display the appropriate products based on the sentiment level
-    $(".display-product").click(function () {
-      $.ajax({
-        type: 'GET',
-        data: { sentiment: 1 }, // use scoreSentiment
-        dataType: 'json',
-        contentType: 'application/json',
-        url: '@Url.Action("GetProduct")',
-        success: function (result) {
-          var resultString = "Product: " + result.name + "<br>Price: $" + result.price + "</br>";
-          $('#returned-product').html(resultString);
-        }
-      })
+      // display the appropriate products based on the sentiment level
+      $(".display-product").click(function () {
+        $.ajax({
+          type: 'GET',
+          data: { sentiment: 1 }, // use scoreSentiment
+          dataType: 'json',
+          contentType: 'application/json',
+          url: '@Url.Action("GetProduct")',
+          success: function (result) {
+            var resultString = "Product: " + result.name + "<br>Price: $" + result.price + "</br>";
+            $('#returned-product').html(resultString);
+          }
+        })
+      });
     });
   });
 </script>
@@ -73,6 +72,7 @@
   <hr />
   <h3>Sentiment Analysis</h3>
   <h5>The sentiment analysis score is a reflection of the positive or negative sentiment. It is calculated using Microsoft Cognitive Services. The minimum score is 0 (the most negative), and maximum score is 1 (the most positive). Your selected product is based on this score - click to view your score, and make any changes to your text that you'ld like. Then click to select your product.</h5>
+
   <p><input type="submit" id ="analyze" value="Analyze" /></p>
   <h3><span class="return-score"></span></h3>
 </div>
