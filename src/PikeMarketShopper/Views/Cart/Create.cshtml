@@ -38,7 +38,7 @@
         success: function (data) {
           scoreSentiment = data.documents[0].score;
           console.log("Second: " + scoreSentiment);
-          $(".return-score").append(scoreSentiment);
+          $(".return-score").append(scoreSentiment + "<hr/>");
         },
         error: (function () {
           alert("Please enter text before clicking!");
