@@ -16,27 +16,6 @@ namespace pikemarketshopper.Migrations
                 .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Name")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .HasName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -147,6 +126,27 @@ namespace pikemarketshopper.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("PikeMarketShopper.Models.ApplicationRole", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<string>("Name")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("NormalizedName")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .HasName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles");
+                });
+
             modelBuilder.Entity("PikeMarketShopper.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
@@ -205,7 +205,7 @@ namespace pikemarketshopper.Migrations
 
                     b.Property<int?>("CustomerId1");
 
-                    b.Property<decimal>("Sentiment");
+                    b.Property<double>("Sentiment");
 
                     b.Property<string>("Type");
 
@@ -267,11 +267,11 @@ namespace pikemarketshopper.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.Property<int>("ProductTypeId");
 
-                    b.Property<decimal>("SentimentValue");
+                    b.Property<double>("SentimentValue");
 
                     b.Property<string>("Size");
 
@@ -296,6 +296,20 @@ namespace pikemarketshopper.Migrations
                     b.HasKey("ProductTypeId");
 
                     b.ToTable("ProductTypes");
+                });
+
+            modelBuilder.Entity("PikeMarketShopper.Models.Sentiment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Language");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sentiment");
                 });
 
             modelBuilder.Entity("PikeMarketShopper.Models.Shop", b =>
@@ -326,7 +340,7 @@ namespace pikemarketshopper.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
+                    b.HasOne("PikeMarketShopper.Models.ApplicationRole")
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -350,7 +364,7 @@ namespace pikemarketshopper.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
+                    b.HasOne("PikeMarketShopper.Models.ApplicationRole")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);

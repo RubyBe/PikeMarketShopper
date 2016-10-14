@@ -22,12 +22,13 @@ namespace PikeMarketShopper.Controllers
       return View();
     }
 
-    public IActionResult GetProduct(int sentiment)
+    public IActionResult GetProduct(double sentiment)
     {
       Product selectedProduct = db.Products.FirstOrDefault(product => product.SentimentValue < sentiment);
       string name = selectedProduct.Name;
       double price = selectedProduct.Price;
-      Product returnProduct = new Product(name, price);
+      string image = selectedProduct.Image;
+      Product returnProduct = new Product(name, price, image);
       return Json(returnProduct);
     }
   }

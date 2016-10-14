@@ -8,8 +8,8 @@
 @*@model IEnumerable<PikeMarketShopper.Models.Product>*@
 
 <script type="text/javascript">
+  var scoreSentiment = 0;
   $(document).ready(function () {
-    var scoreSentiment = 0;
     console.log("First: " + scoreSentiment);
     $("#analyze").click(function () {
       // retrieve the form text from the customer and create a json string to send to Microsoft's Cognitive Services API
@@ -37,7 +37,7 @@
         data: JSON.stringify(cartSentiment),
         success: function (data) {
           scoreSentiment = data.documents[0].score;
-          console.log("Inner: " + scoreSentiment);
+          console.log("Second: " + scoreSentiment);
           $(".return-score").append(scoreSentiment);
         },
         error: (function () {
@@ -49,16 +49,18 @@
       $(".display-product").click(function () {
         $.ajax({
           type: 'GET',
-          data: { sentiment: 1 }, // use scoreSentiment
+          data: { sentiment: scoreSentiment }, // use scoreSentiment
           dataType: 'json',
           contentType: 'application/json',
           url: '@Url.Action("GetProduct")',
           success: function (result) {
-            var resultString = "Product: " + result.name + "<br>Price: $" + result.price + "</br>";
+            console.log("Third: " + scoreSentiment);
+            var resultString = 'Product: ' + result.name + '<br>Price: $' + result.price + '</br>' + '<img src="' + result.image + '" width="225" height="175">';
             $('#returned-product').html(resultString);
           }
         })
       });
+      console.log("Fourth: " + scoreSentiment);
     });
   });
 </script>

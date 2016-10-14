@@ -11,10 +11,11 @@ namespace PikeMarketShopper.Models
     {
 
     }
-    public Product(string name, double price)
+    public Product(string name, double price, string image)
     {
       Name = name;
       Price = price;
+      Image = image;
     }
 
 
