@@ -33,6 +33,7 @@ namespace PikeMarketShopper.Models
     {
       return this.ProductId.GetHashCode();
     }
+    [Key]
     public int ProductId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
