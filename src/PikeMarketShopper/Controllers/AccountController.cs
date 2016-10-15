@@ -45,9 +45,9 @@ namespace PikeMarketShopper.Controllers
       if (result.Succeeded)
       {
         ApplicationRole role = new ApplicationRole();
-        role.Name = "Administrator";
+        role.Name = "NormalUser";
         IdentityResult roleResults = await _roleManager.CreateAsync(role);
-        _userManager.AddToRoleAsync(user, "Administrator").Wait(); // NormalUser 
+        _userManager.AddToRoleAsync(user, "NormalUser").Wait(); // or, Administrator
       }
       else
       {

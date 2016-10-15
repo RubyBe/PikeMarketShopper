@@ -46,7 +46,7 @@ namespace PikeMarketShopper.Controllers
       // Use the numerical value to pull that number of products from the database
       
       // Alternatively, pull the first product which has a sentiment value greater than the sentiment passed in.
-      Product selectedProduct = db.Products.FirstOrDefault(product => product.SentimentValue > sentiment);
+      Product selectedProduct = db.Products.FirstOrDefault(product => product.SentimentValue < sentiment);
       string name = selectedProduct.Name;
       double price = selectedProduct.Price;
       string image = selectedProduct.Image;

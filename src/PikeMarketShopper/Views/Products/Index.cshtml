@@ -46,8 +46,9 @@
 <div class="container" id="administrative">
   <h3>System Administrative Tools - Product Management</h3>
   <hr />
-    <h4>@Html.ActionLink("Populate the products database table", "CreateProductsData")</h4>
-    <h4>@Html.ActionLink("Populate the products types database table", "CreateProductTypesData")</h4>
+
+    <h4>@Html.ActionLink("Step 1: Populate the products types database table", "CreateProductTypesData")</h4>
+    <h4>@Html.ActionLink("Step 2: Populate the products database table", "CreateProductsData")</h4>
   <hr />
   <ul>
     @foreach (var listProduct in Model.Products)
