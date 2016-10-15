@@ -42,9 +42,13 @@
 @*To be displayed only when user is administrator*@
 @if (User.IsInRole("Administrator"))
 {
-<hr />
+
 <div class="container" id="administrative">
   <h3>System Administrative Tools - Product Management</h3>
+  <hr />
+    <h4>@Html.ActionLink("Populate the products database table", "CreateProductsData")</h4>
+    <h4>@Html.ActionLink("Populate the products types database table", "CreateProductTypesData")</h4>
+  <hr />
   <ul>
     @foreach (var listProduct in Model.Products)
     {

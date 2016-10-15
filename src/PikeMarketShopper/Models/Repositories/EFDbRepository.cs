@@ -44,5 +44,12 @@ namespace PikeMarketShopper.Models.Repositories
     {
       throw new NotImplementedException();
     }
+
+    public ProductType Save(ProductType productType)
+    {
+      db.ProductTypes.Add(productType);
+      db.SaveChanges();
+      return productType;
+    }
   }
 }
