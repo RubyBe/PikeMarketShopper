@@ -45,10 +45,20 @@ namespace PikeMarketShopper.Controllers
       if (result.Succeeded)
       {
         ApplicationRole role = new ApplicationRole();
-        role.Name = "NormalUser";
+        role.Name = "Administrator";
         IdentityResult roleResults = await _roleManager.CreateAsync(role);
-        _userManager.AddToRoleAsync(user, "NormalUser").Wait();
-        return RedirectToAction("Login"); // Go immediately to login page
+        _userManager.AddToRoleAsync(user, "Administrator").Wait(); // NormalUser
+        //return RedirectToAction("Login"); // Go immediately to login page    
+      }
+      else
+      {
+        return View();
+      }
+      // automatically sign in user after registration
+      Microsoft.AspNetCore.Identity.SignInResult resultNext = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+      if (result.Succeeded)
+      {
+        return RedirectToAction("Index", "Home");
       }
       else
       {
