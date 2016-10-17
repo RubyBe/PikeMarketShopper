@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,13 +18,12 @@ namespace PikeMarketShopper.Models
 
     // A class defining a shopping cart for a shopping session
     [Key]
+    public int RecordId { get; set; }
     public int CartId { get; set; }
-    public string Type { get; set; }
     public double Sentiment { get; set; }
-    public int CustomerId { get; set; }
-    public virtual Customer Customer { get; set; }
-
-    public virtual ICollection<Product> Products { get; set; }
-
+    public int ProductId { get; set; }
+    public int Count { get; set; }
+    public virtual Product Product { get; set; }
+    public DateTime DateCreated { get; set; }
   }
 }

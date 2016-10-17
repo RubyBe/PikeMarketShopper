@@ -9,6 +9,8 @@ namespace PikeMarketShopper.Models
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Cart> Carts { get; set; }
+    public DbSet<Order> Order { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<ProductType> ProductTypes { get; set; }
     public DbSet<Sentiment> Sentiment { get; set; }
     public DbSet<Shop> Shops { get; set; }
