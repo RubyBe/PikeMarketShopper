@@ -13,7 +13,13 @@ namespace PikeMarketShopper.Controllers
     PikeMarketDbContext db = new PikeMarketDbContext();
     public IActionResult Index()
     {
-        return View(db.Shops.ToList());
+        return View();
+    }
+
+    public IActionResult Details(int shopType)
+    {
+      //return View(db.Shops.Where(t => t.Number == shopType).ToList());
+      return View();
     }
   }
 }

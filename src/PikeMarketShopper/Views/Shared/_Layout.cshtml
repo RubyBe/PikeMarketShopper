@@ -17,29 +17,22 @@
     <li role="presentation" class="active">@Html.ActionLink("Home", "Index", "Home")</li>
     <li role="presentation"><a href="http://twodudesapps.azurewebsites.net" target="_blank">About Us</a></li>
     <li role="presentation"><a href="mailto:DrGonzo@Outlook.com">Contact</a></li>
-    <li role="presentation"><a href="mailto:DrGonzo@Outlook.com">Welcome @User.Identity.Name!</a></li>
-    <li role="presentation"><a href="mailto:DrGonzo@Outlook.com">
-      @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated)
+    {
+      <li role="presentation"><a href="">Welcome @User.Identity.Name!</a></li>
+      @using (Html.BeginForm("Logoff", "Account"))
       {
-        <div>
-          @using (Html.BeginForm("Logoff", "Account"))
-          {
-            <input type="submit" class="btn btn-default" value="Log Out" />
-          }
-        </div>
+        <li role="presentation"><a href=""><input type="submit" class="btn btn-default" value="Log Out" /></a> </li>
       }
-    </a></li>
+    }
+    else
+    {
+      <li role ="presentation" >@Html.ActionLink("Log in to my account", "Login", "Account")</li >
+      <li role ="presentation" >@Html.ActionLink("Create a new account", "Register", "Account")</li >
+    }
   </ul>
   <div class="container">
-    @if (!User.Identity.IsAuthenticated)
-    {
-      <div>
-        <hr />
-        <h4>@Html.ActionLink("Log in to my account", "Login", "Account")</h4>
-        <h4>@Html.ActionLink("Create a new account", "Register", "Account")</h4>
-        <hr />
-      </div>
-    }
+
     @RenderBody()
   </div>
   @RenderBody()
