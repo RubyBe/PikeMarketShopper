@@ -1,6 +1,10 @@
 ﻿#textSentiment {
   height: 150px;
-  width: 625px;
+  width: 300px;
+}
+
+body {
+  font-family: 'Molengo', serif;
 }
 
 .thumbnail {

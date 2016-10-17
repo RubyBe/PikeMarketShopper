@@ -3,8 +3,6 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>The Intuitively Tailored Pike Market Shopper</h1>
-
 @*@model IEnumerable<PikeMarketShopper.Models.Product>*@
 
 <script type="text/javascript">
@@ -46,7 +44,7 @@
       });
 
       // display the appropriate products based on the sentiment level
-      $(".display-product").click(function () {
+      $("#display-product").click(function () {
         $.ajax({
           type: 'GET',
           data: { sentiment: scoreSentiment }, // use scoreSentiment
@@ -65,26 +63,23 @@
   });
 </script>
 
-<h2>Select a Customized Product!</h2>
+<h1>The Intuitively Tailored Pike Market Shopper</h1>
 <hr />
-<div>
-  <p>The Intuitive Tailored shopping tool will select a product based on your mood or situation - or your friend's or family member's situation. In the text box below, describe how you or your friend/family member is feeling, or what situation you or they are in...we'll use Microsoft's Cognitive Services to analyze the text and we'll select a product to make you feel great!</p>
-  <hr />
-  <input type="text" id="textSentiment" value="Enter your text here" />
-  <hr />
-  <h3>Sentiment Analysis</h3>
-  <h5>The sentiment analysis score is a reflection of the positive or negative sentiment. It is calculated using Microsoft Cognitive Services. The minimum score is 0 (the most negative), and maximum score is 1 (the most positive). Your selected product is based on this score - click to view your score, and make any changes to your text that you'ld like. Then click to select your product.</h5>
-
-  <p><input type="submit" id ="analyze" value="Analyze" /></p>
-  <h3><span class="return-score"></span></h3>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Step 1. Start a customized product selection</h3>
+    <p>The Intuitive Tailored shopping tool will select a product based on your mood or situation - or your friend's or family member's situation. In the text box below, describe how you or your friend/family member is feeling, or what situation you or they are in...we'll use Microsoft's Cognitive Services to analyze the text and we'll select a product to make you feel great!</p>
+    <input type="text" id="textSentiment" value="Enter your text here" />
+  </div>
+  <div class="col-md-4">
+    <h3>Step 2. View your sentiment analysis score</h3>
+    <p>The sentiment analysis score is a reflection of the positive or negative sentiment. It is calculated using Microsoft Cognitive Services. The minimum score is 0 (the most negative), and maximum score is 1 (the most positive). Your selected product is based on this score - click to view your score, and make any changes to your text that you'd like. Then click in Step 3 to select your product.</p>
+    <p><input type="submit" id="analyze" value="Analyze" /></p>
+    <h3><span class="return-score"></span></h3>
+  </div>
+  <div class="col-md-4">
+    <h3>Step 3. Display your custom-selected product</h3>
+    <p><input type="submit" id="display-product" value="Display"/></p>
+    <div id="returned-product"></div>
+  </div>
 </div>
-
-<hr />
-<h3 class="display-product">Select My Product</h3>
-<div id="returned-product"></div>
-
-<hr />
-
-
-
-@Html.ActionLink("Home", "Index")
