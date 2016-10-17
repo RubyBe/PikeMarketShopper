@@ -6,32 +6,26 @@
 @model PikeMarketShopper.Models.Product
 
 <h2>Add a New Product</h2>
-<div class="jumbotron">
+<div>
   @using (Html.BeginForm())
   {
-    <p>@Html.LabelFor(model => model.ProductTypeId)</p>
+    <h5>@Html.LabelFor(model => model.ProductTypeId)</h5>
     <p>@Html.DropDownList("ProductTypeId")</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.Name)</p>
+    <h5>@Html.LabelFor(model => model.Name)</h5>
     <p>@Html.TextBoxFor(model => model.Name)</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.Description)</p>
+    <h5>@Html.LabelFor(model => model.Description)</h5>
     <p>@Html.TextBoxFor(model => model.Description)</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.Size)</p>
+    <h5>@Html.LabelFor(model => model.Size)</h5>
     <p>@Html.TextBoxFor(model => model.Size)</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.Price)</p>
+    <h5>@Html.LabelFor(model => model.Price)</h5>
     <p>@Html.TextBoxFor(model => model.Price)</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.Image)</p>
+    <h5>@Html.LabelFor(model => model.Image)</h5>
     <p>@Html.TextBoxFor(model => model.Image)</p>
-    <hr />
-    <p>@Html.LabelFor(model => model.SentimentValue)</p>
+    <h5>@Html.LabelFor(model => model.SentimentValue)</h5>
     <p>@Html.TextBoxFor(model => model.SentimentValue)</p>
-    <hr />
     <p><input type="submit" name="new-product" value="Add Product" /></p>
     <hr />
-    @Html.ActionLink("Return to Product List", "Index")
+
+    <h4>@Html.ActionLink("Return to Product List", "Index")</h4>
   }
 </div>
